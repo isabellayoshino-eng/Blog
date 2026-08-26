@@ -1,148 +1,262 @@
+:root {
+  --purple-dark: #12002b;
+  --purple-mid: #2a085c;
+  --purple-main: #8a2be2;
+  --purple-light: #c77dff;
+  --neon-pink: #ff007f;
+  --white: #ffffff;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
 }
 
 body {
-  background-color: #f4f7f6;
-  color: #333;
-  line-height: 1.6;
+  background: var(--purple-dark);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Animação de Entrada */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ================= ANIMAÇÕES (@keyframes) ================= */
+
+/* 1. Flutuar suaves */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-/* Cabeçalho com Gradiente */
+/* 2. Pulsar botão/badge */
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 125, 255, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(199, 125, 255, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(199, 125, 255, 0); }
+}
+
+/* 3. Surgir e girar (Pop-in) */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+  80% { transform: scale(1.05) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* 4. Brilho do texto */
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 10px var(--purple-light), 0 0 20px var(--purple-main); }
+  50% { text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--purple-light); }
+}
+
+/* 5. Bolhas flutuantes no fundo */
+@keyframes backgroundFloat {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(-1000px) rotate(360deg); opacity: 0; }
+}
+
+/* ================= ESTRUTURA E ESTILOS ================= */
+
+/* Fundo Animado */
+.background-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  bottom: -100px;
+  background: radial-gradient(circle, var(--purple-light), transparent);
+  border-radius: 50%;
+  animation: backgroundFloat 12s infinite linear;
+}
+
+.particle:nth-child(1) { width: 80px; height: 80px; left: 10%; animation-duration: 10s; }
+.particle:nth-child(2) { width: 150px; height: 150px; left: 50%; animation-duration: 15s; animation-delay: 2s; }
+.particle:nth-child(3) { width: 50px; height: 50px; left: 85%; animation-duration: 8s; animation-delay: 4s; }
+
+/* Cabeçalho */
 .header {
-  background: linear-gradient(135deg, #6e8efb, #a777e3);
-  color: white;
-  padding: 1.5rem 2rem;
+  background: rgba(42, 8, 92, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-bottom: 2px solid var(--purple-main);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.logo {
-  transition: transform 0.3s ease;
+.glow-text {
+  animation: textGlow 3s infinite alternate;
 }
 
-.logo:hover {
-  transform: scale(1.05);
+.logo span {
+  color: var(--neon-pink);
 }
 
-.header nav a {
-  color: white;
+.nav-link {
+  color: var(--white);
   text-decoration: none;
-  margin-left: 1.5rem;
-  font-weight: 500;
-  transition: opacity 0.3s;
+  margin-left: 2rem;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s;
 }
 
-.header nav a:hover {
-  opacity: 0.8;
+/* Animação da barra do menu no hover */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background: var(--neon-pink);
+  transition: width 0.3s ease-in-out;
 }
 
-/* Conteúdo Principal */
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Container Principal */
 .container {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  max-width: 750px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
 }
 
-.post {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  animation: fadeIn 0.8s ease-out;
+/* Cards (Posts e Comentários) */
+.post, .comments-section {
+  background: linear-gradient(145deg, rgba(42, 8, 92, 0.9), rgba(18, 0, 43, 0.9));
+  border: 1px solid var(--purple-main);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.post h2 {
-  color: #6e8efb;
-  margin-bottom: 0.5rem;
+.hover-float {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.post-date {
-  font-size: 0.85rem;
-  color: #888;
-  margin-bottom: 1rem;
+.hover-float:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(138, 43, 226, 0.4);
 }
 
-/* Seção de Comentários */
-.comments-section {
-  background: white;
-  margin-top: 2rem;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  animation: fadeIn 1s ease-out;
-}
-
-.comments-section h3 {
-  margin-bottom: 1rem;
-}
-
-#comment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-#comment-form input, 
-#comment-form textarea {
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-#comment-form input:focus, 
-#comment-form textarea:focus {
-  border-color: #6e8efb;
-}
-
-.btn-send {
-  background: #6e8efb;
+.badge {
+  background: var(--neon-pink);
   color: white;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 8px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Botão de Curtir */
+.like-section {
+  margin-top: 1.5rem;
+}
+
+.btn-like {
+  background: transparent;
+  border: 2px solid var(--purple-light);
+  color: var(--white);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-like:hover {
+  background: var(--purple-main);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--purple-light);
+}
+
+/* Formulário e Inputs */
+.input-group {
+  margin-top: 1rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(18, 0, 43, 0.7);
+  border: 2px solid var(--purple-mid);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 10px var(--neon-pink);
+}
+
+/* Botão Enviar com Efeito de Brilho Passing */
+.btn-send {
+  position: relative;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: linear-gradient(90deg, var(--purple-main), var(--neon-pink));
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+  overflow: hidden;
+  transition: transform 0.2s;
 }
 
 .btn-send:hover {
-  background: #5a7be0;
-  transform: translateY(-2px);
+  transform: scale(1.02);
 }
 
-/* Animação de entrada dos novos comentários */
+/* Lista de Comentários */
+.comments-list {
+  margin-top: 2rem;
+}
+
 .comment-card {
-  background: #f9f9f9;
-  border-left: 4px solid #a777e3;
-  padding: 1rem;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--neon-pink);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
   margin-bottom: 1rem;
-  animation: fadeIn 0.5s ease-out;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .comment-card h4 {
-  color: #444;
-  font-size: 0.95rem;
+  color: var(--purple-light);
+  display: flex;
+  justify-content: space-between;
 }
 
 .comment-card p {
-  font-size: 0.9rem;
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
+  color: #ddd;
 }
