@@ -1,219 +1,208 @@
-/* Configurações Gerais */
+/* 🎨 CORES E CONFIGURAÇÕES GERAIS */
+:root {
+    --primary-color: #ff4757;
+    --secondary-color: #2ed573;
+    --bg-color: #ffa502;
+    --card-bg: #ffffff;
+    --text-color: #2f3542;
+}
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
 }
 
 body {
-    background-color: #121214;
-    color: #ffffff;
-    transition: background 0.5s ease;
-    overflow-x: hidden;
+    background: linear-gradient(135deg, var(--bg-color), #ff6b81);
+    color: var(--text-color);
+    padding: 20px;
+    min-height: 100vh;
 }
 
-/* Cabeçalho Animado */
+/* 🎪 CABEÇALHO BALANÇANTE */
 header {
-    background: linear-gradient(45deg, #ff007f, #7928ca, #ff007f);
-    background-size: 200% 200%;
-    animation: gradienteAnimado 5s ease infinite;
     text-align: center;
     padding: 40px 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    background: var(--card-bg);
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
+    box-shadow: 8px 8px 0px var(--text-color);
+    margin-bottom: 30px;
+    animation: bounce 2s infinite alternate; /* Aplica a animação contínua */
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0) rotate(-1deg); }
+    100% { transform: translateY(-10px) rotate(1deg); }
 }
 
 header h1 {
-    font-size: 2.5rem;
-    text-shadow: 3px 3px #00ffff;
+    font-size: 3rem;
+    color: var(--primary-color);
+    text-shadow: 3px 3px 0px #f1f2f6;
     margin-bottom: 10px;
 }
 
-#btn-cor {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: #00ffff;
-    color: #000;
-    border: none;
-    border-radius: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-    box-shadow: 0 5px #00b3b3;
-    transition: 0.2s;
-}
-
-#btn-cor:active {
-    box-shadow: 0 2px #00b3b3;
-    transform: translateY(3px);
-}
-
-/* Container de Posts */
+/* 📦 CARDS DOS POSTS (EFEITO AO PASSAR O MOUSE) */
 .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.post-card {
-    background: #202024;
-    border: 4px solid #7928ca;
+.post {
+    background: var(--card-bg);
+    border: 4px solid var(--text-color);
     border-radius: 20px;
     padding: 25px;
     margin-bottom: 30px;
+    box-shadow: 8px 8px 0px var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.post-card:hover {
-    transform: rotate(-1deg) scale(1.03);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
-    border-color: #00ffff;
+.post:hover {
+    transform: scale(1.02) translateY(-5px); /* Dá zoom e sobe um pouco */
+    box-shadow: 12px 12px 0px var(--text-color);
+    background-color: #fff9e6;
 }
 
-.post-badge {
-    position: absolute;
-    top: -15px;
-    left: 20px;
-    background: #00ffff;
-    color: #000;
-    padding: 5px 15px;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-.post-card h2 {
-    margin-top: 10px;
-    color: #ff007f;
-}
-
-.post-card p {
-    margin: 15px 0;
-    line-height: 1.6;
-}
-
-.btn-like {
-    background: #ff007f;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: transform 0.2s;
-}
-
-.btn-like:hover {
-    transform: scale(1.1);
-}
-
-/* Seções de Comentários e Feedback */
-.interacao-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 40px;
-}
-
-@media (max-width: 768px) {
-    .interacao-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-.box-interacao {
-    background: #29292e;
-    border: 3px solid #ff007f;
-    border-radius: 20px;
-    padding: 20px;
-}
-
-.box-interacao h3 {
+.post h2 {
+    color: #3742fa;
     margin-bottom: 15px;
-    color: #00ffff;
 }
 
-.box-interacao input, .box-interacao textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    border: 2px solid #7928ca;
-    background: #121214;
+/* 🖲️ BOTÕES QUE AFUNDAM AO CLICAR */
+.btn-fun {
+    background-color: var(--secondary-color);
     color: white;
+    border: 3px solid var(--text-color);
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px var(--text-color);
+    transition: all 0.1s ease;
+    margin-top: 15px;
+    display: inline-block;
+    position: relative;
 }
 
-.box-interacao button {
+.btn-fun:active {
+    transform: translate(4px, 4px); /* Empurra o botão para dar efeito de clique */
+    box-shadow: 0px 0px 0px var(--text-color);
+}
+
+/* 💬 CAIXAS DE COMENTÁRIOS */
+.interactive-section {
+    background: #f1f2f6;
+    border-top: 3px dashed var(--text-color);
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.comment-list {
+    margin-top: 15px;
+    list-style: none;
+}
+
+.comment-item {
+    background: white;
+    border: 2px solid var(--text-color);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    animation: slideIn 0.3s ease-out; /* Comentário surge deslizando */
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+input[type="text"], textarea {
     width: 100%;
     padding: 12px;
-    background: #7928ca;
-    color: white;
-    border: none;
+    border: 3px solid var(--text-color);
     border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 12px;
     font-size: 1rem;
 }
 
-.box-interacao button:hover {
-    background: #ff007f;
-}
-
-/* Lista de Comentários Dinâmicos */
-#lista-comentarios {
-    margin-top: 15px;
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.comentario-item {
-    background: #121214;
-    padding: 10px;
-    border-left: 4px solid #00ffff;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    animation: entradaSuave 0.4s ease-out;
-}
-
-.comentario-item strong {
-    color: #ff007f;
-}
-
-/* Emojis do Feedback */
-.emoji-rating {
+/* 💌 BOTÃO DE FEEDBACK FLUTUANTE */
+.feedback-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border: 4px solid var(--text-color);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
     font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.emoji-rating span {
     cursor: pointer;
+    box-shadow: 5px 5px 0px var(--text-color);
+    z-index: 1000;
     transition: transform 0.2s;
 }
 
-.emoji-rating span:hover, .emoji-rating span.selecionado {
-    transform: scale(1.4);
-    text-shadow: 0 0 10px #00ffff;
+.feedback-widget:hover {
+    transform: scale(1.1) rotate(15deg); /* Gira levemente no hover */
 }
 
-footer {
-    text-align: center;
+/* 🪟 POP-UP (MODAL) COM EFEITO ELÁSTICO */
+.modal {
+    display: none; /* Começa escondido */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+}
+
+.modal-content {
+    background: white;
+    border: 4px solid var(--text-color);
+    border-radius: 20px;
     padding: 30px;
-    margin-top: 50px;
-    background: #202024;
-    border-top: 3px solid #7928ca;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 10px 10px 0px var(--text-color);
+    position: relative;
+    animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito "estilingue" */
 }
 
-/* Animações Keyframes */
-@keyframes gradienteAnimado {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes popUp {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-@keyframes entradaSuave {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 🎉 PARTICULAS DE CONFETE */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: explode 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
 }
