@@ -1,55 +1,93 @@
-/* 🎨 CORES E CONFIGURAÇÕES GERAIS */
+/* 🎨 VARIAVEIS DE TEMAS (MUDAM DINAMICAMENTE) */
+body[data-theme="feliz"] {
+    --bg-color: #ffa502; --primary-color: #ff4757; --secondary-color: #2ed573;
+}
+body[data-theme="radical"] {
+    --bg-color: #1e272e; --primary-color: #00d2d3; --secondary-color: #ff9f43;
+}
+body[data-theme="relax"] {
+    --bg-color: #a8edda; --primary-color: #ffb8b8; --secondary-color: #6c5ce7;
+}
+
 :root {
-    --primary-color: #ff4757;
-    --secondary-color: #2ed573;
-    --bg-color: #ffa502;
     --card-bg: #ffffff;
     --text-color: #2f3542;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+    box-sizing: border-box; margin: 0; padding: 0;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, var(--bg-color), #ff6b81);
+    background: var(--bg-color);
     color: var(--text-color);
     padding: 20px;
     min-height: 100vh;
+    transition: background 0.5s ease;
 }
 
-/* 🎪 CABEÇALHO BALANÇANTE */
+/* 🎭 BARRA DE HUMOR */
+.mood-bar {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.btn-mood {
+    padding: 5px 15px;
+    margin: 0 5px;
+    border: 2px solid var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    background: white;
+}
+
+/* 🎪 CABEÇALHO BALANÇANTE COM OLHOS */
 header {
     text-align: center;
-    padding: 40px 20px;
+    padding: 30px 20px;
     background: var(--card-bg);
     border: 4px solid var(--text-color);
     border-radius: 20px;
     box-shadow: 8px 8px 0px var(--text-color);
     margin-bottom: 30px;
-    animation: bounce 2s infinite alternate; /* Aplica a animação contínua */
+    animation: bounce 3s infinite alternate ease-in-out;
 }
 
 @keyframes bounce {
-    0% { transform: translateY(0) rotate(-1deg); }
-    100% { transform: translateY(-10px) rotate(1deg); }
+    0% { transform: translateY(0) rotate(-0.5deg); }
+    100% { transform: translateY(-8px) rotate(0.5deg); }
 }
 
-header h1 {
-    font-size: 3rem;
-    color: var(--primary-color);
-    text-shadow: 3px 3px 0px #f1f2f6;
+/* 👀 ANIMAÇÃO DOS OLHOS ESPIÕES */
+.eyes-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     margin-bottom: 10px;
 }
-
-/* 📦 CARDS DOS POSTS (EFEITO AO PASSAR O MOUSE) */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+.eye {
+    width: 45px;
+    height: 45px;
+    background: white;
+    border: 3px solid var(--text-color);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.pupil {
+    width: 18px;
+    height: 18px;
+    background: var(--text-color);
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* 📦 CARDS E NOVAS ANIMAÇÕES */
+.container { max-width: 800px; margin: 0 auto; }
 
 .post {
     background: var(--card-bg);
@@ -58,151 +96,105 @@ header h1 {
     padding: 25px;
     margin-bottom: 30px;
     box-shadow: 8px 8px 0px var(--text-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 .post:hover {
-    transform: scale(1.02) translateY(-5px); /* Dá zoom e sobe um pouco */
+    transform: scale(1.02) translateY(-5px);
     box-shadow: 12px 12px 0px var(--text-color);
-    background-color: #fff9e6;
 }
 
-.post h2 {
-    color: #3742fa;
-    margin-bottom: 15px;
+/* 🧠 TEXTO DE CURIOSIDADE ANIMADO */
+.curiosity-box {
+    text-align: center;
+    background: #fff9e6;
+}
+.pulse-text {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    transition: opacity 0.3s;
+}
+.text-changed {
+    animation: popText 0.4s ease;
+}
+@keyframes popText {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
-/* 🖲️ BOTÕES QUE AFUNDAM AO CLICAR */
+/* 🖲️ BOTÕES */
+.post-actions { display: flex; gap: 15px; }
+
 .btn-fun {
     background-color: var(--secondary-color);
-    color: white;
-    border: 3px solid var(--text-color);
-    padding: 10px 20px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
+    color: white; border: 3px solid var(--text-color);
+    padding: 10px 20px; font-size: 1.1rem; font-weight: bold;
+    border-radius: 50px; cursor: pointer;
     box-shadow: 4px 4px 0px var(--text-color);
-    transition: all 0.1s ease;
-    margin-top: 15px;
-    display: inline-block;
-    position: relative;
+    transition: all 0.1s ease; margin-top: 15px;
+    position: relative; overflow: visible;
 }
-
 .btn-fun:active {
-    transform: translate(4px, 4px); /* Empurra o botão para dar efeito de clique */
+    transform: translate(4px, 4px);
     box-shadow: 0px 0px 0px var(--text-color);
 }
 
-/* 💬 CAIXAS DE COMENTÁRIOS */
+/* 💬 COMENTÁRIOS */
 .interactive-section {
     background: #f1f2f6;
     border-top: 3px dashed var(--text-color);
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 20px; padding-top: 20px;
 }
-
-.comment-list {
-    margin-top: 15px;
-    list-style: none;
-}
-
+.comment-list { margin-top: 15px; list-style: none; }
 .comment-item {
-    background: white;
-    border: 2px solid var(--text-color);
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    animation: slideIn 0.3s ease-out; /* Comentário surge deslizando */
+    background: white; border: 2px solid var(--text-color);
+    padding: 10px; border-radius: 10px; margin-bottom: 10px;
+    animation: slideIn 0.3s ease-out;
 }
-
 @keyframes slideIn {
     from { transform: translateX(-20px); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
 }
 
 input[type="text"], textarea {
-    width: 100%;
-    padding: 12px;
-    border: 3px solid var(--text-color);
-    border-radius: 10px;
-    margin-top: 8px;
-    margin-bottom: 12px;
-    font-size: 1rem;
+    width: 100%; padding: 12px; border: 3px solid var(--text-color);
+    border-radius: 10px; margin-top: 8px; margin-bottom: 12px; font-size: 1rem;
 }
 
 /* 💌 BOTÃO DE FEEDBACK FLUTUANTE */
 .feedback-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: white;
-    border: 4px solid var(--text-color);
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    cursor: pointer;
-    box-shadow: 5px 5px 0px var(--text-color);
-    z-index: 1000;
-    transition: transform 0.2s;
+    position: fixed; bottom: 20px; right: 20px;
+    background: white; border: 4px solid var(--text-color);
+    border-radius: 50%; width: 70px; height: 70px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; cursor: pointer; box-shadow: 5px 5px 0px var(--text-color);
+    z-index: 1000; transition: transform 0.2s;
 }
+.feedback-widget:hover { transform: scale(1.1) rotate(15deg); }
 
-.feedback-widget:hover {
-    transform: scale(1.1) rotate(15deg); /* Gira levemente no hover */
-}
-
-/* 🪟 POP-UP (MODAL) COM EFEITO ELÁSTICO */
+/* 🪟 POP-UP MODAL */
 .modal {
-    display: none; /* Começa escondido */
-    position: fixed;
+    display: none; position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    align-items: center;
-    justify-content: center;
-    z-index: 1001;
+    background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 1001;
 }
-
 .modal-content {
-    background: white;
-    border: 4px solid var(--text-color);
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 10px 10px 0px var(--text-color);
-    position: relative;
-    animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito "estilingue" */
+    background: white; border: 4px solid var(--text-color);
+    border-radius: 20px; padding: 30px; max-width: 400px; width: 90%;
+    box-shadow: 10px 10px 0px var(--text-color); position: relative;
+    animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 @keyframes popUp {
     from { transform: scale(0.7); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
+.close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
 
-.close-btn {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* 🎉 PARTICULAS DE CONFETE */
-.confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
+/* 🎉 PARTICULAS (CONFETES E CORAÇÕES) */
+.particle {
+    position: absolute; pointer-events: none;
     animation: explode 0.6s ease-out forwards;
-    pointer-events: none;
 }
-
 @keyframes explode {
-    0% { transform: translate(0, 0) scale(1); opacity: 1; }
-    100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0); opacity: 0; }
 }
