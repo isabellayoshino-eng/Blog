@@ -1,4 +1,4 @@
-/* Configurações Gerais e Cores Vivas */
+/* Configurações Globais */
 * {
     margin: 0;
     padding: 0;
@@ -7,189 +7,220 @@
 }
 
 body {
-    background: linear-gradient(135deg, #120c1f, #1a103c);
-    color: #fff;
-    overflow-x: hidden;
-    padding-bottom: 50px;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
 }
 
 .container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 20px;
 }
 
-/* Cabeçalho com Efeito Balanço (Animação) */
-.main-header {
-    text-align: center;
-    padding: 60px 20px;
-    background: linear-gradient(45deg, #ff007f, #7f00ff);
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    box-shadow: 0 10px 30px rgba(127, 0, 255, 0.5);
+/* Menu Animado */
+header {
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.bounce-title {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    animation: bounce 2s infinite ease-in-out;
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.logo:hover {
+    transform: scale(1.1) rotate(-5deg);
 }
 
-/* Cartão do Post com Efeito Hover Neon */
-.post-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid #ff007f;
-    border-radius: 20px;
-    padding: 30px;
-    margin-top: 40px;
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    margin-left: 20px;
+    font-weight: 500;
     position: relative;
+    padding: 5px 0;
+}
+
+/* Animação da linha sob o menu */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Card do Post com Animação de Entrada */
+.post-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 40px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .post-card:hover {
-    transform: scale(1.03) rotate(1deg);
-    box-shadow: 0 0 25px #ff007f;
-}
-
-.post-badge {
-    position: absolute;
-    top: -15px;
-    right: 20px;
-    background: #00ffff;
-    color: #000;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-/* Botões Divertidos */
-.fun-btn {
-    background: #00ffff;
-    color: #000;
-    border: none;
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: 0.2s;
-}
-
-.fun-btn:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px #00ffff;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
-.fun-btn:active {
-    transform: translateY(1px);
+.post-image {
+    height: 250px;
+    background: linear-gradient(135deg, #007bff, #6610f2);
 }
 
-/* Seções de Interação (Comentários e Feedback) */
-.interaction-section {
-    background: rgba(255, 255, 255, 0.08);
+.post-content {
+    padding: 30px;
+}
+
+.category {
+    background: #e1f0ff;
+    color: #007bff;
+    padding: 5px 12px;
     border-radius: 20px;
-    padding: 25px;
-    margin-top: 30px;
-    border: 1px solid #7f00ff;
+    font-size: 0.85rem;
+    font-weight: bold;
 }
 
-.comment-box input, .comment-box textarea {
+.post-content h2 {
+    margin: 15px 0;
+    font-size: 1.8rem;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* Botão de Curtir Interativo */
+.like-btn {
+    background: #fff0f2;
+    border: 1px solid #ffb3bc;
+    color: #ff4757;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.like-btn:hover {
+    background: #ff4757;
+    color: #fff;
+}
+
+.like-btn:active {
+    transform: scale(0.9);
+}
+
+/* Seção de Comentários */
+.comments-section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.comments-section h3 {
+    margin-bottom: 20px;
+}
+
+#commentForm input, #commentForm textarea {
     width: 100%;
     padding: 12px;
-    margin-top: 10px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 2px solid #7f00ff;
-    border-radius: 10px;
-    color: white;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-.comment-box textarea {
-    height: 100px;
-    resize: none;
+#commentForm input:focus, #commentForm textarea:focus {
+    border-color: #007bff;
 }
 
 .submit-btn {
-    width: 100%;
-    background: linear-gradient(45deg, #7f00ff, #ff007f);
-    color: white;
+    background: #007bff;
+    color: #fff;
     border: none;
-    padding: 12px;
-    margin-top: 15px;
-    font-weight: bold;
-    border-radius: 10px;
+    padding: 12px 24px;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
 }
 
 .submit-btn:hover {
-    filter: brightness(1.2);
+    background: #0056b3;
 }
 
-/* Lista de comentários com surgimento suave */
+/* Lista de Comentários */
 .comments-list {
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .comment-item {
-    background: rgba(255, 255, 255, 0.05);
+    background: #f9f9f9;
     padding: 15px;
-    border-radius: 10px;
-    margin-top: 10px;
-    border-left: 5px solid #00ffff;
-    animation: slideIn 0.4s ease-out forwards;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #007bff;
+    animation: slideIn 0.4s ease-out;
+}
+
+.comment-item strong {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Keyframes para Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-30px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Botões de Emojis do Feedback */
-.feedback-emojis {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.emoji-btn {
-    font-size: 2.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.emoji-btn:hover {
-    transform: scale(1.4) rotate(10deg);
-}
-
-.feedback-msg {
-    text-align: center;
-    margin-top: 15px;
-    font-weight: bold;
-    color: #00ffff;
-}
-
-/* Sistema de Confetes do JS */
-#confetti-container {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 999;
-}
-
-.confetti {
-    position: absolute;
-    width: 10px; height: 10px;
-    animation: fall 2s linear forwards;
-}
-
-@keyframes fall {
-    to { transform: translateY(105vh) rotate(360deg); }
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
