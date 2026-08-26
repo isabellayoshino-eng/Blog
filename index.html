@@ -8,44 +8,63 @@
 </head>
 <body>
 
-    <!-- Cabeçalho Principal -->
-    <header class="header">
-        <h1 class="logo">✨ Meu Universo Colorido ✨</h1>
-        <p class="subtitle">Onde as ideias mais malucas ganham vida!</p>
-        <button id="theme-toggle" class="btn">Mudar a Vibe! 🌈</button>
+    <header>
+        <h1>✨ Bem-vindo ao Universo Neon! ✨</h1>
+        <p>Onde as ideias brilham e a diversão nunca acaba!</p>
+        <button id="btn-cor" onclick="mudarCorFundo()">🌈 Mudar Vibes do Blog</button>
     </header>
 
-    <!-- Conteúdo do Blog -->
     <main class="container">
-        
-        <!-- Postagem 1 -->
-        <article class="card animate-pop">
-            <div class="card-badge" style="background-color: #ff007f;">MUNDO POP</div>
-            <h2 class="card-title">Minha Primeira Postagem Incrível! 🎉</h2>
-            <p class="card-text">Este é o começo do blog mais interativo da internet. Clique no botão abaixo para celebrar esse momento histórico comigo!</p>
-            <button class="btn btn-interaction">Soltar Confete! 🥳</button>
+        <!-- Post 1 -->
+        <article class="post-card">
+            <div class="post-badge">🔥 Em Alta</div>
+            <h2>Post Super Secreto #1</h2>
+            <p>Este é o primeiro post do blog mais animado da internet. Passe o mouse por aqui para ver a mágica acontecer!</p>
+            <button class="btn-like" onclick="darLike(this)">🎉 Curtir (<span>0</span>)</button>
         </article>
 
-        <!-- Postagem 2 -->
-        <article class="card animate-pop">
-            <div class="card-badge" style="background-color: #7000ff;">CURIOSIDADES</div>
-            <h2 class="card-title">Por que este blog é tão chamativo? 🤔</h2>
-            <p class="card-text">Nós usamos um estilo chamado Neo-Brutalismo! Ele mistura cores super neon com bordas pretas bem grossas. É impossível parar de olhar!</p>
-            <button class="btn btn-interaction">Explodir Alegria!💥</button>
+        <!-- Post 2 -->
+        <article class="post-card">
+            <div class="post-badge" style="background: #ff007f;">💡 Ideia</div>
+            <h2>Criatividade sem Limites!</h2>
+            <p>Deixe sua imaginação voar alto. Código não precisa ser chato, ele pode ser uma explosão de cores e interatividade!</p>
+            <button class="btn-like" onclick="darLike(this)">🎉 Curtir (<span>0</span>)</button>
         </article>
 
-        <!-- Postagem 3 -->
-        <article class="card animate-pop">
-            <div class="card-badge" style="background-color: #00f0ff; color: #000;">DICA DO DIA</div>
-            <h2 class="card-title">Como customizar este código? 🛠️</h2>
-            <p class="card-text">Você pode abrir o arquivo de estilos (CSS) e mudar as cores de fundo para as suas favoritas. Deixe a sua imaginação voar!</p>
-            <button class="btn btn-interaction">Mandar Vibes! ✌️</button>
-        </article>
+        <!-- Seção de Interação -->
+        <section class="interacao-container">
+            <!-- Comentários -->
+            <div class="box-interacao">
+                <h3>💬 Deixe seu Comentário</h3>
+                <input type="text" id="nome-comentario" placeholder="Seu apelido divertido...">
+                <textarea id="texto-comentario" rows="3" placeholder="O que você achou? Escreva algo incrível!"></textarea>
+                <button onclick="adicionarComentario()">Enviar Comentário 🚀</button>
+                
+                <div id="lista-comentarios">
+                    <!-- Comentários vão aparecer aqui -->
+                </div>
+            </div>
 
+            <!-- Feedback -->
+            <div class="box-interacao">
+                <h3>📢 Mandar Feedback</h3>
+                <p>Como está sua experiência?</p>
+                <div class="emoji-rating">
+                    <span onclick="selecionarEmoji(this, 'Amei! 😍')">😍</span>
+                    <span onclick="selecionarEmoji(this, 'Divertido! 🤪')">🤪</span>
+                    <span onclick="selecionarEmoji(this, 'Legal! 👍')">👍</span>
+                    <span onclick="selecionarEmoji(this, 'Pode melhorar 😐')">😐</span>
+                </div>
+                <input type="hidden" id="feedback-emoji" value="">
+                <textarea id="texto-feedback" rows="3" placeholder="Mensagem secreta para o criador..."></textarea>
+                <button onclick="enviarFeedback()">Mandar Feedback ⚡</button>
+            </div>
+        </section>
     </main>
 
-    <!-- Confetes gerados por Script vão aparecer aqui de forma transparente -->
-    <div id="confetti-container"></div>
+    <footer>
+        <p>Feito com 💖 e muitas linhas de código animadas!</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
