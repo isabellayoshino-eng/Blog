@@ -3,38 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Blog Interativo</title>
+  <title>Blog Roxo Ultra Interativo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Fundo Animado com Bolhas Boladas -->
+  <div class="background-particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
   <header class="header">
-    <h1 class="logo">Meu Super Blog</h1>
+    <h1 class="logo glow-text">💜 PURPLE<span>BLOG</span></h1>
     <nav>
-      <a href="#">Início</a>
-      <a href="#">Sobre</a>
-      <a href="#">Contato</a>
+      <a href="#" class="nav-link">Início</a>
+      <a href="#" class="nav-link">Posts</a>
+      <a href="#" class="nav-link">Sobre</a>
     </nav>
   </header>
 
   <main class="container">
-    <article class="post">
-      <h2>Meu Primeiro Post Interativo</h2>
-      <p class="post-date">Publicado em 26 de agosto de 2026</p>
-      <p>Bem-vindo ao meu blog! Este espaço é totalmente interativo e cheio de animações para tornar a leitura mais divertida.</p>
+    
+    <!-- Card Principal do Post -->
+    <article class="post hover-float">
+      <span class="badge pulse">NOVO!</span>
+      <h2 class="typewriter">Bem-vindo ao Blog mais animado da web! 🚀</h2>
+      <p class="post-date">📅 26 de Agosto de 2026</p>
+      <p class="post-text">Passe o mouse pelos elementos, interaja com os botões e deixe um comentário com efeito especial logo abaixo!</p>
+      
+      <div class="like-section">
+        <button id="like-btn" class="btn-like">
+          ❤️ <span id="like-count">0</span> Curtidas
+        </button>
+      </div>
     </article>
 
+    <!-- Seção de Comentários -->
     <section class="comments-section">
-      <h3>Deixe seu Comentário</h3>
+      <h3 class="glow-text">💬 Área de Comentários</h3>
       
       <form id="comment-form">
-        <input type="text" id="username" placeholder="Seu nome" required>
-        <textarea id="comment-text" placeholder="Escreva seu comentário..." rows="4" required></textarea>
-        <button type="submit" class="btn-send">Publicar Comentário</button>
+        <div class="input-group">
+          <input type="text" id="username" placeholder="Seu apelido super legal" required>
+        </div>
+        <div class="input-group">
+          <textarea id="comment-text" placeholder="Manda a braba no comentário..." rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn-send shine-effect">
+          🚀 Enviar Comentário
+        </button>
       </form>
 
       <div class="comments-list" id="comments-container">
-        <!-- Os comentários aparecerão aqui -->
+        <!-- Comentários vão aparecer aqui -->
       </div>
     </section>
   </main>
