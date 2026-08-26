@@ -2,23 +2,50 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Blog Divertido</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Blog Super Divertido! 🚀</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Bem-vindo ao Meu Blog! 🎉</h1>
-        <button id="btnColor">Mudar Cor de Fundo</button>
+    <!-- Cabeçalho Principal -->
+    <header class="header">
+        <h1 class="logo">✨ Meu Universo Colorido ✨</h1>
+        <p class="subtitle">Onde as ideias mais malucas ganham vida!</p>
+        <button id="theme-toggle" class="btn">Mudar a Vibe! 🌈</button>
     </header>
 
-    <main>
-        <article class="post">
-            <h2>Primeiro Post: Minhas Aventura!</h2>
-            <p>Este é o meu novo cantinho na internet. Fique por dentro de todas as novidades!</p>
-            <button class="like-btn" onclick="curtirPost(this)">❤️ Curtir (<span>0</span>)</button>
+    <!-- Conteúdo do Blog -->
+    <main class="container">
+        
+        <!-- Postagem 1 -->
+        <article class="card animate-pop">
+            <div class="card-badge" style="background-color: #ff007f;">MUNDO POP</div>
+            <h2 class="card-title">Minha Primeira Postagem Incrível! 🎉</h2>
+            <p class="card-text">Este é o começo do blog mais interativo da internet. Clique no botão abaixo para celebrar esse momento histórico comigo!</p>
+            <button class="btn btn-interaction">Soltar Confete! 🥳</button>
         </article>
+
+        <!-- Postagem 2 -->
+        <article class="card animate-pop">
+            <div class="card-badge" style="background-color: #7000ff;">CURIOSIDADES</div>
+            <h2 class="card-title">Por que este blog é tão chamativo? 🤔</h2>
+            <p class="card-text">Nós usamos um estilo chamado Neo-Brutalismo! Ele mistura cores super neon com bordas pretas bem grossas. É impossível parar de olhar!</p>
+            <button class="btn btn-interaction">Explodir Alegria!💥</button>
+        </article>
+
+        <!-- Postagem 3 -->
+        <article class="card animate-pop">
+            <div class="card-badge" style="background-color: #00f0ff; color: #000;">DICA DO DIA</div>
+            <h2 class="card-title">Como customizar este código? 🛠️</h2>
+            <p class="card-text">Você pode abrir o arquivo de estilos (CSS) e mudar as cores de fundo para as suas favoritas. Deixe a sua imaginação voar!</p>
+            <button class="btn btn-interaction">Mandar Vibes! ✌️</button>
+        </article>
+
     </main>
+
+    <!-- Confetes gerados por Script vão aparecer aqui de forma transparente -->
+    <div id="confetti-container"></div>
 
     <script src="script.js"></script>
 </body>
