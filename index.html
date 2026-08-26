@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Blog Interativo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <header class="header">
+    <h1 class="logo">Meu Super Blog</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Sobre</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <article class="post">
+      <h2>Meu Primeiro Post Interativo</h2>
+      <p class="post-date">Publicado em 26 de agosto de 2026</p>
+      <p>Bem-vindo ao meu blog! Este espaço é totalmente interativo e cheio de animações para tornar a leitura mais divertida.</p>
+    </article>
+
+    <section class="comments-section">
+      <h3>Deixe seu Comentário</h3>
+      
+      <form id="comment-form">
+        <input type="text" id="username" placeholder="Seu nome" required>
+        <textarea id="comment-text" placeholder="Escreva seu comentário..." rows="4" required></textarea>
+        <button type="submit" class="btn-send">Publicar Comentário</button>
+      </form>
+
+      <div class="comments-list" id="comments-container">
+        <!-- Os comentários aparecerão aqui -->
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
