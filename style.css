@@ -1,1 +1,46 @@
+/* Estilo Geral da Página */
+body {
+    font-family: 'Comic Sans MS', sans-serif, Arial;
+    background-color: #ffeb3b; /* Amarelo vibrante */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.5s ease; /* Transição suave de cor */
+}
 
+/* Cabeçalho */
+header {
+    text-align: center;
+    background: #ff4081; /* Rosa choque */
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Cartão do Post */
+.post {
+    background: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+    border: 3px solid #00e676; /* Verde brilhante */
+}
+
+/* Botões Interativos */
+button {
+    background-color: #00bcd4; /* Azul turquesa */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Efeito ao passar o mouse no botão */
+button:hover {
+    transform: scale(1.1); /* Botão cresce levemente */
+    background-color: #6200ea; /* Muda para roxo */
+}
