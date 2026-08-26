@@ -1,200 +1,195 @@
-/* 🎨 VARIAVEIS DE TEMAS (MUDAM DINAMICAMENTE) */
-body[data-theme="feliz"] {
-    --bg-color: #ffa502; --primary-color: #ff4757; --secondary-color: #2ed573;
-}
-body[data-theme="radical"] {
-    --bg-color: #1e272e; --primary-color: #00d2d3; --secondary-color: #ff9f43;
-}
-body[data-theme="relax"] {
-    --bg-color: #a8edda; --primary-color: #ffb8b8; --secondary-color: #6c5ce7;
-}
-
-:root {
-    --card-bg: #ffffff;
-    --text-color: #2f3542;
-}
-
+/* Configurações Gerais e Cores Vivas */
 * {
-    box-sizing: border-box; margin: 0; padding: 0;
-    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: var(--bg-color);
-    color: var(--text-color);
+    background: linear-gradient(135deg, #120c1f, #1a103c);
+    color: #fff;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    min-height: 100vh;
-    transition: background 0.5s ease;
 }
 
-/* 🎭 BARRA DE HUMOR */
-.mood-bar {
+/* Cabeçalho com Efeito Balanço (Animação) */
+.main-header {
     text-align: center;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-.btn-mood {
-    padding: 5px 15px;
-    margin: 0 5px;
-    border: 2px solid var(--text-color);
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    background: white;
+    padding: 60px 20px;
+    background: linear-gradient(45deg, #ff007f, #7f00ff);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 0 10px 30px rgba(127, 0, 255, 0.5);
 }
 
-/* 🎪 CABEÇALHO BALANÇANTE COM OLHOS */
-header {
-    text-align: center;
-    padding: 30px 20px;
-    background: var(--card-bg);
-    border: 4px solid var(--text-color);
-    border-radius: 20px;
-    box-shadow: 8px 8px 0px var(--text-color);
-    margin-bottom: 30px;
-    animation: bounce 3s infinite alternate ease-in-out;
+.bounce-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite ease-in-out;
 }
 
 @keyframes bounce {
-    0% { transform: translateY(0) rotate(-0.5deg); }
-    100% { transform: translateY(-8px) rotate(0.5deg); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-/* 👀 ANIMAÇÃO DOS OLHOS ESPIÕES */
-.eyes-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-.eye {
-    width: 45px;
-    height: 45px;
-    background: white;
-    border: 3px solid var(--text-color);
-    border-radius: 50%;
+/* Cartão do Post com Efeito Hover Neon */
+.post-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid #ff007f;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 40px;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.pupil {
-    width: 18px;
-    height: 18px;
-    background: var(--text-color);
-    border-radius: 50%;
+
+.post-card:hover {
+    transform: scale(1.03) rotate(1deg);
+    box-shadow: 0 0 25px #ff007f;
+}
+
+.post-badge {
     position: absolute;
+    top: -15px;
+    right: 20px;
+    background: #00ffff;
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
 }
 
-/* 📦 CARDS E NOVAS ANIMAÇÕES */
-.container { max-width: 800px; margin: 0 auto; }
+/* Botões Divertidos */
+.fun-btn {
+    background: #00ffff;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.2s;
+}
 
-.post {
-    background: var(--card-bg);
-    border: 4px solid var(--text-color);
+.fun-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px #00ffff;
+}
+
+.fun-btn:active {
+    transform: translateY(1px);
+}
+
+/* Seções de Interação (Comentários e Feedback) */
+.interaction-section {
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     padding: 25px;
-    margin-bottom: 30px;
-    box-shadow: 8px 8px 0px var(--text-color);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.post:hover {
-    transform: scale(1.02) translateY(-5px);
-    box-shadow: 12px 12px 0px var(--text-color);
+    margin-top: 30px;
+    border: 1px solid #7f00ff;
 }
 
-/* 🧠 TEXTO DE CURIOSIDADE ANIMADO */
-.curiosity-box {
-    text-align: center;
-    background: #fff9e6;
-}
-.pulse-text {
-    font-size: 1.2rem;
-    margin: 15px 0;
-    transition: opacity 0.3s;
-}
-.text-changed {
-    animation: popText 0.4s ease;
-}
-@keyframes popText {
-    0% { transform: scale(0.8); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+.comment-box input, .comment-box textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid #7f00ff;
+    border-radius: 10px;
+    color: white;
 }
 
-/* 🖲️ BOTÕES */
-.post-actions { display: flex; gap: 15px; }
-
-.btn-fun {
-    background-color: var(--secondary-color);
-    color: white; border: 3px solid var(--text-color);
-    padding: 10px 20px; font-size: 1.1rem; font-weight: bold;
-    border-radius: 50px; cursor: pointer;
-    box-shadow: 4px 4px 0px var(--text-color);
-    transition: all 0.1s ease; margin-top: 15px;
-    position: relative; overflow: visible;
-}
-.btn-fun:active {
-    transform: translate(4px, 4px);
-    box-shadow: 0px 0px 0px var(--text-color);
+.comment-box textarea {
+    height: 100px;
+    resize: none;
 }
 
-/* 💬 COMENTÁRIOS */
-.interactive-section {
-    background: #f1f2f6;
-    border-top: 3px dashed var(--text-color);
-    margin-top: 20px; padding-top: 20px;
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(45deg, #7f00ff, #ff007f);
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
 }
-.comment-list { margin-top: 15px; list-style: none; }
+
+.submit-btn:hover {
+    filter: brightness(1.2);
+}
+
+/* Lista de comentários com surgimento suave */
+.comments-list {
+    margin-top: 25px;
+}
+
 .comment-item {
-    background: white; border: 2px solid var(--text-color);
-    padding: 10px; border-radius: 10px; margin-bottom: 10px;
-    animation: slideIn 0.3s ease-out;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border-left: 5px solid #00ffff;
+    animation: slideIn 0.4s ease-out forwards;
 }
+
 @keyframes slideIn {
-    from { transform: translateX(-20px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
-input[type="text"], textarea {
-    width: 100%; padding: 12px; border: 3px solid var(--text-color);
-    border-radius: 10px; margin-top: 8px; margin-bottom: 12px; font-size: 1rem;
+/* Botões de Emojis do Feedback */
+.feedback-emojis {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
 }
 
-/* 💌 BOTÃO DE FEEDBACK FLUTUANTE */
-.feedback-widget {
-    position: fixed; bottom: 20px; right: 20px;
-    background: white; border: 4px solid var(--text-color);
-    border-radius: 50%; width: 70px; height: 70px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem; cursor: pointer; box-shadow: 5px 5px 0px var(--text-color);
-    z-index: 1000; transition: transform 0.2s;
+.emoji-btn {
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
-.feedback-widget:hover { transform: scale(1.1) rotate(15deg); }
 
-/* 🪟 POP-UP MODAL */
-.modal {
-    display: none; position: fixed;
+.emoji-btn:hover {
+    transform: scale(1.4) rotate(10deg);
+}
+
+.feedback-msg {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #00ffff;
+}
+
+/* Sistema de Confetes do JS */
+#confetti-container {
+    position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6); align-items: center; justify-content: center; z-index: 1001;
+    pointer-events: none;
+    z-index: 999;
 }
-.modal-content {
-    background: white; border: 4px solid var(--text-color);
-    border-radius: 20px; padding: 30px; max-width: 400px; width: 90%;
-    box-shadow: 10px 10px 0px var(--text-color); position: relative;
-    animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-@keyframes popUp {
-    from { transform: scale(0.7); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-.close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; font-weight: bold; }
 
-/* 🎉 PARTICULAS (CONFETES E CORAÇÕES) */
-.particle {
-    position: absolute; pointer-events: none;
-    animation: explode 0.6s ease-out forwards;
+.confetti {
+    position: absolute;
+    width: 10px; height: 10px;
+    animation: fall 2s linear forwards;
 }
-@keyframes explode {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0); opacity: 0; }
+
+@keyframes fall {
+    to { transform: translateY(105vh) rotate(360deg); }
 }
