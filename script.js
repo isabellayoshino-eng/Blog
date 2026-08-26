@@ -3,43 +3,59 @@ document.addEventListener('DOMContentLoaded', () => {
   const usernameInput = document.getElementById('username');
   const commentTextInput = document.getElementById('comment-text');
   const commentsContainer = document.getElementById('comments-container');
+  
+  // Sistema de Curtidas
+  const likeBtn = document.getElementById('like-btn');
+  const likeCountDisplay = document.getElementById('like-count');
+  let likes = 0;
 
-  // Adiciona o evento de envio ao formulário
+  likeBtn.addEventListener('click', () => {
+    likes++;
+    likeCountDisplay.textContent = likes;
+    
+    // Pequena animação de pulso ao clicar no botão de curtir
+    likeBtn.style.transform = 'scale(1.3)';
+    setTimeout(() => {
+      likeBtn.style.transform = 'scale(1)';
+    }, 200);
+  });
+
+  // Sistema de Adicionar Comentários
   commentForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Impede a página de recarregar
+    event.preventDefault();
 
     const name = usernameInput.value.trim();
     const text = commentTextInput.value.trim();
 
-    if (name !== '' && text !== '') {
-      // Cria o elemento do novo comentário
+    if (name && text) {
+      // Criar o card do comentário com data/hora
       const newComment = document.createElement('div');
       newComment.classList.add('comment-card');
 
+      const horaAtual = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
       newComment.innerHTML = `
-        <h4>${escapeHTML(name)}</h4>
+        <h4>${escapeHTML(name)} <span>${horaAtual}</span></h4>
         <p>${escapeHTML(text)}</p>
       `;
 
-      // Adiciona o comentário no início da lista
+      // Adiciona o novo comentário no topo com animação
       commentsContainer.prepend(newComment);
 
-      // Limpa os campos do formulário
+      // Limpa os campos
       usernameInput.value = '';
       commentTextInput.value = '';
     }
   });
 
-  // Função de segurança básica para evitar injeção de código
+  // Proteção simples contra HTML malicioso (XSS)
   function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, 
-      tag => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        "'": '&#39;',
-        '"': '&quot;'
-      }[tag] || tag)
-    );
+    return str.replace(/[&<>'"]/g, tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag));
   }
 });
