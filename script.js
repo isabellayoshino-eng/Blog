@@ -1,73 +1,79 @@
-// 1. Mudar o fundo do Blog de forma aleatória e divertida
-function mudarCorFundo() {
-    const cores Divertidas = ['#121214', '#1a0b2e', '#0b1a2e', '#1c1c1c', '#250b2e'];
-    const corAleatoria = coresDivertidas[Math.floor(Math.random() * coresDivertidas.length)];
-    document.body.style.backgroundColor = corAleatoria;
-}
+// ⚡ 1. GERENCIADOR DE COMENTÁRIOS
+const commentForm = document.getElementById('comment-form');
+const commentsBox = document.getElementById('comments-box');
 
-// 2. Sistema de Likes simples
-function darLike(botao) {
-    const spanContador = botao.querySelector('span');
-    let likes Atuais = parseInt(spanContador.innerText);
-    likesAtuais++;
-    spanContador.innerText = likesAtuais;
+commentForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Impede a página de recarregar
     
-    // Efeito de mini-pulo no botão ao clicar
-    botao.style.transform = 'scale(1.2)';
-    setTimeout(() => { botao.style.transform = 'scale(1)'; }, 150);
-}
-
-// 3. Sistema para Adicionar Comentários na Tela
-function adicionarComentario() {
-    const nome = document.getElementById('nome-comentario').value.trim();
-    const texto = document.getElementById('texto-comentario').value.trim();
-    const lista = document.getElementById('lista-comentarios');
-
-    if (nome === "" || texto === "") {
-        alert("Preencha seu nome e o comentário para postar! 😊");
-        return;
-    }
+    const nameInput = document.getElementById('comment-name');
+    const textInput = document.getElementById('comment-text');
 
     // Cria a estrutura do novo comentário
-    const novoComentario = document.createElement('div');
-    novoComentario.classList.add('comentario-item');
-    novoComentario.innerHTML = `<strong>👾 ${nome}:</strong> <p>${texto}</p>`;
+    const li = document.createElement('li');
+    li.className = 'comment-item';
+    li.innerHTML = `<strong>${nameInput.value}:</strong> ${textInput.value}`;
 
-    // Adiciona no topo da lista
-    lista.insertBefore(novoComentario, lista.firstChild);
+    // Adiciona na lista visual
+    commentsBox.appendChild(li);
 
-    // Limpa os campos
-    document.getElementById('nome-comentario').value = "";
-    document.getElementById('texto-comentario').value = "";
-}
+    // Limpa os campos digitados
+    nameInput.value = '';
+    textInput.value = '';
+});
 
-// 4. Selecionar Emoji para o Feedback
-function selecionarEmoji(elemento, reacao) {
-    // Remove seleção dos outros emojis
-    const emojis = document.querySelectorAll('.emoji-rating span');
-    emojis.forEach(e => e.classList.remove('selecionado'));
+// ⚡ 2. CONTROLE DA JANELA DE FEEDBACK (MODAL)
+const modal = document.getElementById('feedback-modal');
+const openBtn = document.getElementById('open-feedback');
+const closeBtn = document.getElementById('close-feedback');
+const feedbackForm = document.getElementById('feedback-form');
+
+// Abre a janela
+openBtn.addEventListener('click', () => modal.style.display = 'flex');
+
+// Fecha a janela no "X"
+closeBtn.addEventListener('click', () => modal.style.display = 'none');
+
+// Processa o envio do feedback
+feedbackForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const feedbackText = document.getElementById('feedback-text').value;
     
-    // Adiciona seleção ao clicado
-    elemento.classList.add('selecionado');
-    document.getElementById('feedback-emoji').value = reacao;
-}
+    // Mostra um aviso divertido na tela
+    alert(`Obrigado pelo feedback! 😍\nSua mensagem foi recebida:\n"${feedbackText}"`);
+    
+    document.getElementById('feedback-text').value = '';
+    modal.style.display = 'none'; // Fecha o pop-up
+});
 
-// 5. Simular Envio do Feedback
-function enviarFeedback() {
-    const reacao = document.getElementById('feedback-emoji').value;
-    const mensagem = document.getElementById('texto-feedback').value.trim();
+// ⚡ 3. ANIMAÇÃO DE EXPLOSÃO DE CONFETES
+const btnConfete = document.getElementById('btn-confete');
 
-    if (reacao === "") {
-        alert("Escolha um emoji para nos dizer como se sente! 😍");
-        return;
+btnConfete.addEventListener('click', function(event) {
+    const colors = ['#ff4757', '#2ed573', '#1e90ff', '#ffa502', '#3742fa', '#9b59b6'];
+    
+    // Cria 30 pedacinhos de confete coloridos
+    for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        
+        // Define uma cor aleatória da lista
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = `50%`;
+        confetti.style.top = `50%`;
+        
+        // Calcula direções espalhadas aleatórias (ângulos e força)
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 120 + 40;
+        const x = Math.cos(angle) * velocity;
+        const y = Math.sin(angle) * velocity;
+        
+        // Envia as coordenadas para o CSS usar na animação
+        confetti.style.setProperty('--x', `${x}px`);
+        confetti.style.setProperty('--y', `${y}px`);
+        
+        btnConfete.appendChild(confetti);
+        
+        // Deleta o confete depois que a animação acaba para não travar o site
+        setTimeout(() => confetti.remove(), 600);
     }
-
-    alert(`🎉 Feedback Enviado com Sucesso!\nReação: ${reacao}\nMensagem: "${mensagem || 'Sem mensagem adicional'}"\nObrigado por ajudar o blog a crescer!`);
-    
-    // Limpa o formulário
-    const emojis = document.querySelectorAll('.emoji-rating span');
-    emojis.forEach(e => e.classList.remove('selecionado'));
-    document.getElementById('feedback-emoji').value = "";
-    document.getElementById('texto-feedback').value = "";
-}
-
+});
