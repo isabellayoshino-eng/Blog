@@ -3,63 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Blog Super Divertido! 🚀</title>
+    <title>Meu Blog Interativo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho Animado -->
-    <header class="main-header">
-        <h1 class="bounce-title">🎉 Bem-vindo ao Meu Universo! 🎉</h1>
-        <p>O lugar mais interativo e animado da internet.</p>
+    <!-- Cabeçalho / Menu -->
+    <header>
+        <div class="logo">🚀 MeuBlog</div>
+        <nav>
+            <ul>
+                <li><a href="#" class="nav-link">Início</a></li>
+                <li><a href="#" class="nav-link">Artigos</a></li>
+                <li><a href="#" class="nav-link">Sobre</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Conteúdo Principal -->
     <main class="container">
         <!-- Post do Blog -->
         <article class="post-card">
-            <div class="post-badge">🔥 Em Alta</div>
-            <h2>Como criar coisas incríveis na web?</h2>
-            <p>A programação não precisa ser chata! Com um pouco de CSS e criatividade, você pode transformar uma página simples em uma verdadeira festa visual. Passe o mouse nos elementos e descubra as surpresas!</p>
-            <button class="fun-btn" onclick="soltarConfete()">Me clica! 🌟</button>
+            <div class="post-image"></div>
+            <div class="post-content">
+                <span class="category">Tecnologia</span>
+                <h2>Como criar um blog ultra moderno e interativo</h2>
+                <p>Animações fluidas e interatividade retêm mais leitores. Aprenda a usar CSS Grid, Flexbox e JavaScript para dar vida à sua página web.</p>
+                <div class="post-meta">
+                    <button class="like-btn" id="likeBtn">❤️ <span id="likeCount">0</span> Curtidas</button>
+                    <span class="date">📅 26 de Agosto, 2026</span>
+                </div>
+            </div>
         </article>
 
         <!-- Seção de Comentários -->
-        <section class="interaction-section">
-            <h3>💬 Deixe seu Comentário</h3>
-            <div class="comment-box">
-                <input type="text" id="comment-name" placeholder="Seu nome apelido divertido...">
-                <textarea id="comment-text" placeholder="Escreva algo bem legal aqui..."></textarea>
-                <button class="submit-btn" onclick="adicionarComentario()">Publicar Comentário! 🚀</button>
-            </div>
-            
-            <!-- Lista onde os comentários vão aparecer -->
-            <div id="comments-list" class="comments-list">
-                <!-- Comentário de exemplo -->
-                <div class="comment-item">
-                    <strong>🤖 Dedé Robô:</strong>
-                    <p>Primeiro a comentar! Esse blog tá demais! 🎈</p>
-                </div>
-            </div>
-        </section>
+        <section class="comments-section">
+            <h3>Deixe seu Comentário</h3>
+            <form id="commentForm">
+                <input type="text" id="userName" placeholder="Seu nome" required>
+                <textarea id="commentText" placeholder="O que você achou desse post?" rows="4" required></textarea>
+                <button type="submit" class="submit-btn">Enviar Comentário</button>
+            </form>
 
-        <!-- Seção de Feedback -->
-        <section class="interaction-section feedback-section">
-            <h3>🌈 O que você está achando?</h3>
-            <p>Escolha uma reação para nos mandar um feedback rápido:</p>
-            <div class="feedback-emojis">
-                <button class="emoji-btn" onclick="enviarFeedback('😍 Amei!')">😍</button>
-                <button class="emoji-btn" onclick="enviarFeedback('🤣 Ri muito!')">🤣</button>
-                <button class="emoji-btn" onclick="enviarFeedback('💡 Genial!')">💡</button>
-                <button class="emoji-btn" onclick="enviarFeedback('🤯 Explodiu a cabeça!')">🤯</button>
+            <div class="comments-list" id="commentsList">
+                <!-- Os comentários vão aparecer aqui dinamicamente -->
             </div>
-            <div id="feedback-message" class="feedback-msg"></div>
         </section>
     </main>
 
-    <!-- Efeito de partículas invisível para o JS -->
-    <div id="confetti-container"></div>
-
-    <script src="script.js"></script>
+    <script href="script.js"></script>
 </body>
 </html>
